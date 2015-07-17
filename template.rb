@@ -88,7 +88,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
 <% unless options[:singleton] -%>
   def index
-    @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
+    @<%= plural_table_name %> = <%= class_name %>.page(params[:page])
     respond_with(@<%= plural_table_name %>)
   end
 <% end -%>
