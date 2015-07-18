@@ -11,6 +11,7 @@ gem 'responders'
 gem 'json_responder', git: 'git@cagit.careerbuilder.com:zwelch/json_responder.git'
 gem 'pagination_responder', git: 'git@cagit.careerbuilder.com:zwelch/pagination_responder.git'
 gem 'rails_api_filters', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_filters.git'
+gem 'rails_api_sortable', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_sortable.git'
 gem 'faker'
 gem 'kaminari'
 
@@ -84,11 +85,11 @@ require_dependency "<%= namespaced_file_path %>/application_controller"
 <% end -%>
 <% module_namespacing do -%>
 class <%= controller_class_name %>Controller < ApplicationController
+  before_action :set_<%= plural_table_name %>, only: :index
   before_action :set_<%= singular_table_name %>, only: [:show, :update, :destroy]
 
 <% unless options[:singleton] -%>
   def index
-    @<%= plural_table_name %> = <%= class_name %>.page(params[:page])
     respond_with(@<%= plural_table_name %>)
   end
 <% end -%>
@@ -114,6 +115,10 @@ class <%= controller_class_name %>Controller < ApplicationController
   end
 
   private
+    def set_<%= plural_table_name %>
+      @<%= plural_table_name %> = <%= class_name %>.where(<%= "#{singular_table_name}_params" %>).order(sort_by).page(params[:page])
+    end
+
     def set_<%= singular_table_name %>
       @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
     end
