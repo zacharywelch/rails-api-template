@@ -1,8 +1,10 @@
 # rails-api-template
 
-A rails application template for APIs
+A rails [application template](http://guides.rubyonrails.org/rails_application_templates.html) for APIs.
 
 This repository has moved to my [public github account](https://github.com/zacharywelch/rails-api-template).
+
+To see a sample of using Rails as an API check out [rails-api](https://cagit.careerbuilder.com/zwelch/rails-api).
 
 ## Installation
 
