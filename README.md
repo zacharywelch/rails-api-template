@@ -4,11 +4,11 @@ A rails [application template](http://guides.rubyonrails.org/rails_application_t
 
 This repository has moved to my [public github account](https://github.com/zacharywelch/rails-api-template).
 
-To see a sample of using Rails as an API check out [rails-api](https://cagit.careerbuilder.com/zwelch/rails-api).
+To see a sample of using Rails as an API check out [rails-api](https://cagit.careerbuilder.com/zwelch/rails-api) sample.
 
 ## Installation
 
-Before generating your API, you will need [rails-api](https://github.com/rails-api/rails-api) installed
+Before generating your API, you will need [rails-api](https://github.com/rails-api/rails-api) gem installed
 
 ```ruby
 gem install 'rails-api'
