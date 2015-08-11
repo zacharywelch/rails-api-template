@@ -31,9 +31,10 @@ end
 gem_group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'byebug'
 end
 
-run 'bundle install' 
+run 'bundle install'
 
 generate 'rspec:install'
 generate 'responders:install'
