@@ -14,6 +14,7 @@ gem 'rails_api_filters', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_filt
 gem 'rails_api_sortable', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_sortable.git'
 gem 'faker'
 gem 'kaminari'
+gem 'newrelic_rpm'
 
 append_to_file 'Gemfile', "\n\n\n"
 
@@ -31,6 +32,8 @@ run 'bundle install'
 
 generate 'rspec:install'
 generate 'responders:install'
+
+run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #{@app_name}"
 
 gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
