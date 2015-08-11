@@ -1,6 +1,4 @@
-def source_paths
-  [File.join(File.expand_path(File.dirname(__FILE__)), 'templates')]
-end
+@path = "https://cagit.careerbuilder.com/zwelch/rails-api-template/tree/master/templates"
 
 remove_file 'Gemfile'
 create_file 'Gemfile'
@@ -65,12 +63,12 @@ RUBY
 end
 
 remove_file 'lib/application_responder.rb'
-copy_file 'application_responder.rb', 'lib/application_responder.rb'
+get "#{@path}/application_responder.rb", 'lib/application_responder.rb'
 
 remove_file 'app/controllers/application_controller.rb'
-copy_file 'application_controller.rb', 'app/controllers/application_controller.rb'
+get "#{@path}/application_controller.rb", 'app/controllers/application_controller.rb'
 
-copy_file 'controller.rb', 'lib/templates/rails/responders_controller/controller.rb'
+get "#{@path}/controller.rb", 'lib/templates/rails/responders_controller/controller.rb'
 
 after_bundle do
   git :init
