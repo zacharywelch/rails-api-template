@@ -1,5 +1,8 @@
 @path = "https://cagit.careerbuilder.com/zwelch/rails-api-template/tree/master/templates"
 
+copy_file 'README.rdoc', 'README.md'
+remove_file 'README.rdoc'
+
 remove_file 'Gemfile'
 create_file 'Gemfile'
 
