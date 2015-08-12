@@ -43,6 +43,9 @@ run 'bundle install'
 generate 'rspec:install'
 generate 'responders:install'
 
+remove_file '.gitignore'
+get "#{@path}/.gitignore", '.gitignore'
+
 run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #{@app_name}"
 
 get "#{@path}/config/solano.yml", 'config/solano.yml'
