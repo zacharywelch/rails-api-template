@@ -21,6 +21,9 @@ gem 'faker'
 gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'solano'
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'
 
 append_to_file 'Gemfile', "\n\n\n"
 
@@ -45,6 +48,16 @@ run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #
 get "#{@path}/config/solano.yml", 'config/solano.yml'
 get "#{@path}/lib/tasks/solano.rake", 'lib/tasks/solano.rake'
 prepend_to_file 'README.md', "[![](https://ci.solanolabs.com:443/caengineyarddev/REPLACE_WITH_BUILD_BAGDE)](https://ci.solanolabs.com:443/caengineyarddev/activities_api/suites/REPLACE_WITH_SUITE)\n\n"
+
+run 'bundle exec cap install'
+remove_file 'Capfile'
+get "#{@path}/Capfile", 'Capfile'
+remove_file 'config/deploy.rb'
+get "#{@path}/config/deploy.rb", 'config/deploy.rb'
+remove_file 'config/deploy/production.rb'
+get "#{@path}/config/deploy/production.rb", 'config/deploy/production.rb'
+remove_file 'config/deploy/staging.rb'
+get "#{@path}/config/deploy/staging.rb", 'config/deploy/staging.rb'
 
 gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
