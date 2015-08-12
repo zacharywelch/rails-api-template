@@ -43,8 +43,7 @@ run 'bundle install'
 generate 'rspec:install'
 generate 'responders:install'
 
-remove_file '.gitignore'
-get "#{@path}/.gitignore", '.gitignore'
+get "#{@path}/.gitignore", '.gitignore', force: true
 
 run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #{@app_name}"
 
@@ -53,21 +52,16 @@ get "#{@path}/lib/tasks/solano.rake", 'lib/tasks/solano.rake'
 prepend_to_file 'README.md', "[![](https://ci.solanolabs.com:443/caengineyarddev/REPLACE_WITH_BUILD_BAGDE)](https://ci.solanolabs.com:443/caengineyarddev/activities_api/suites/REPLACE_WITH_SUITE)\n\n"
 
 run 'bundle exec cap install'
-remove_file 'Capfile'
-get "#{@path}/Capfile", 'Capfile'
-remove_file 'config/deploy.rb'
-get "#{@path}/config/deploy.rb", 'config/deploy.rb'
-remove_file 'config/deploy/production.rb'
-get "#{@path}/config/deploy/production.rb", 'config/deploy/production.rb'
-remove_file 'config/deploy/staging.rb'
-get "#{@path}/config/deploy/staging.rb", 'config/deploy/staging.rb'
+get "#{@path}/Capfile", 'Capfile', force: true
+get "#{@path}/config/deploy.rb", 'config/deploy.rb', force: true
+get "#{@path}/config/deploy/production.rb", 'config/deploy/production.rb', force: true
+get "#{@path}/config/deploy/staging.rb", 'config/deploy/staging.rb', force: true
 
 gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
 gsub_file "config/application.rb", /require "sprockets\/railtie"/, '# require "sprockets/railtie"'
 
-remove_file 'config/routes.rb'
-create_file "config/routes.rb" do <<-'RUBY'
+create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
   scope defaults: { format: :json } do
     # resources :users
@@ -87,13 +81,9 @@ environment do <<-'RUBY'
 RUBY
 end
 
-remove_file 'lib/application_responder.rb'
-get "#{@path}/application_responder.rb", 'lib/application_responder.rb'
-
-remove_file 'app/controllers/application_controller.rb'
-get "#{@path}/application_controller.rb", 'app/controllers/application_controller.rb'
-
-get "#{@path}/controller.rb", 'lib/templates/rails/responders_controller/controller.rb'
+get "#{@path}/lib/application_responder.rb", 'lib/application_responder.rb', force: true
+get "#{@path}/app/controllers/application_controller.rb", 'app/controllers/application_controller.rb', force: true
+get "#{@path}/lib/templates/rails/responders_controller/controller.rb", 'lib/templates/rails/responders_controller/controller.rb', force: true
 
 after_bundle do
   git :init
