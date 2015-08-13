@@ -4,6 +4,9 @@ get "#{@path}/README.md", 'README.md'
 remove_file 'README.rdoc'
 gsub_file 'README.md', /README/, @app_name
 
+create_file 'config/database.yml.sample', File.read('config/database.yml')
+create_file 'config/secrets.yml.sample', File.read('config/secrets.yml')
+
 remove_file 'Gemfile'
 create_file 'Gemfile'
 
