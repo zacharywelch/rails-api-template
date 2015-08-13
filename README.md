@@ -60,20 +60,17 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
 8. Adds template for controller scaffold
 
-9. Adds newrelic config file
+9. Configures New Relic
 
-10. Adds solano ci support and config
-  - To be checked
+10. Configures Solano
 
-11. Capifies the application and adds basic configs
-  - To be customized with server information
+11. Configures Capistrano
 
 12. Creates sample config files and git ignores the original ones
   - config/database.yml
   - config/secrets.yml
 
-13. Turns README into markdown format
-  - To be customized
+13. Replaces README with markdown
 
 14. Customizes .gitignore file
 
