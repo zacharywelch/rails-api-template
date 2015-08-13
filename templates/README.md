@@ -1,6 +1,6 @@
 # README
 
-[![](https://ci.solanolabs.com:443/caengineyarddev/REPLACE_WITH_BUILD_BAGDE)](https://ci.solanolabs.com:443/caengineyarddev/activities_api/suites/REPLACE_WITH_SUITE)
+[![](https://ci.solanolabs.com:443/caengineyarddev/REPLACE_WITH_BUILD_BAGDE)](https://ci.solanolabs.com:443/caengineyarddev/my_app_name/suites/REPLACE_WITH_SUITE)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
