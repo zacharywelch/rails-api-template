@@ -31,6 +31,11 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [annotate](https://github.com/ctran/annotate_models)
   - [rspec-rails](https://github.com/rspec/rspec-rails)
   - [factory_girl_rails](https://github.com/thoughtbot/factory_girl_rails)
+  - [byebug](https://github.com/deivid-rodriguez/byebug)
+  - [capistrano](https://github.com/capistrano/capistrano)
+  - [capistrano-rvm](https://github.com/capistrano/rvm)
+  - [capistrano-bundler](https://github.com/capistrano/bundler)
+  - [solano](https://github.com/solanolabs/solano)
 
   Several custom gems add behaviors needed by CareerBuilder APIs
   - [json_responder](https://cagit.careerbuilder.com/zwelch/json_responder)
@@ -43,6 +48,7 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 3. Runs the following generators
   - `rspec:install`
   - `responders:install`
+  - `cap install`
 
 4. Removes `ActionView` and `Sprockets` from stack
 
@@ -54,4 +60,18 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
 8. Adds template for controller scaffold
 
-9. Creates initial github commit
+9. Configures New Relic
+
+10. Configures Solano
+
+11. Configures Capistrano
+
+12. Creates sample config files and git ignores the original ones
+  - config/database.yml
+  - config/secrets.yml
+
+13. Replaces README with markdown
+
+14. Customizes .gitignore file
+
+15. Creates initial github commit

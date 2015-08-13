@@ -1,5 +1,12 @@
 @path = "https://cagit.careerbuilder.com/zwelch/rails-api-template/tree/master/templates"
 
+get "#{@path}/README.md", 'README.md'
+remove_file 'README.rdoc'
+gsub_file 'README.md', /README/, @app_name
+
+create_file 'config/database.yml.sample', File.read('config/database.yml')
+create_file 'config/secrets.yml.sample', File.read('config/secrets.yml')
+
 remove_file 'Gemfile'
 create_file 'Gemfile'
 
@@ -17,6 +24,10 @@ gem 'rails_api_sortable', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_sor
 gem 'faker'
 gem 'kaminari'
 gem 'newrelic_rpm'
+gem 'solano'
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'
 
 append_to_file 'Gemfile', "\n\n\n"
 
@@ -28,21 +39,33 @@ end
 gem_group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'byebug'
 end
 
-run 'bundle install' 
+run 'bundle install'
 
 generate 'rspec:install'
 generate 'responders:install'
 
+get "#{@path}/.gitignore", '.gitignore', force: true
+
 run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #{@app_name}"
+
+get "#{@path}/config/solano.yml", 'config/solano.yml'
+get "#{@path}/lib/tasks/solano.rake", 'lib/tasks/solano.rake'
+
+run 'bundle exec cap install'
+get "#{@path}/Capfile", 'Capfile', force: true
+get "#{@path}/config/deploy.rb", 'config/deploy.rb', force: true
+get "#{@path}/config/deploy/production.rb", 'config/deploy/production.rb', force: true
+get "#{@path}/config/deploy/staging.rb", 'config/deploy/staging.rb', force: true
+gsub_file 'config/deploy.rb', /my_app_name/, @app_name
 
 gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
 gsub_file "config/application.rb", /require "sprockets\/railtie"/, '# require "sprockets/railtie"'
 
-remove_file 'config/routes.rb'
-create_file "config/routes.rb" do <<-'RUBY'
+create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
   scope defaults: { format: :json } do
     # resources :users
@@ -62,13 +85,9 @@ environment do <<-'RUBY'
 RUBY
 end
 
-remove_file 'lib/application_responder.rb'
-get "#{@path}/application_responder.rb", 'lib/application_responder.rb'
-
-remove_file 'app/controllers/application_controller.rb'
-get "#{@path}/application_controller.rb", 'app/controllers/application_controller.rb'
-
-get "#{@path}/controller.rb", 'lib/templates/rails/responders_controller/controller.rb'
+get "#{@path}/lib/application_responder.rb", 'lib/application_responder.rb', force: true
+get "#{@path}/app/controllers/application_controller.rb", 'app/controllers/application_controller.rb', force: true
+get "#{@path}/lib/templates/rails/responders_controller/controller.rb", 'lib/templates/rails/responders_controller/controller.rb', force: true
 
 after_bundle do
   git :init

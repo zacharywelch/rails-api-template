@@ -1,0 +1,59 @@
+# Log and temporal files
+########################
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+doc/
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+coverage
+
+# Secrets
+#########
+config/initializers/secret_token.rb
+config/secrets.yml
+.secret
+
+# Environment normalisation
+###########################
+/.bundle
+/vendor/bundle
+
+# Ruby versions
+###############
+.ruby-version
+.ruby-gemset
+.rvmrc
+
+# Configurations
+################
+config/database.yml
+config/secrets.yml
+
+# Packages
+##########
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Other files
+#############
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.solano*
