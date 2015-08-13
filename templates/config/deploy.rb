@@ -1,5 +1,5 @@
 set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :repo_url, 'git@cagit.careerbuilder.com:CorpAppsCB/my_app_name.git'
 
 set :deploy_to, '/home/corpapp/my_app_name'
 set :rvm_type, :user

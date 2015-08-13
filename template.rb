@@ -56,6 +56,7 @@ get "#{@path}/Capfile", 'Capfile', force: true
 get "#{@path}/config/deploy.rb", 'config/deploy.rb', force: true
 get "#{@path}/config/deploy/production.rb", 'config/deploy/production.rb', force: true
 get "#{@path}/config/deploy/staging.rb", 'config/deploy/staging.rb', force: true
+gsub_file 'config/deploy.rb', /my_app_name/, @app_name
 
 gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
