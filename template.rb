@@ -1,7 +1,8 @@
 @path = "https://cagit.careerbuilder.com/zwelch/rails-api-template/tree/master/templates"
 
-copy_file 'README.rdoc', 'README.md'
+get "#{@path}/README.md", 'README.md'
 remove_file 'README.rdoc'
+gsub_file 'README.md', /README/, @app_name
 
 remove_file 'Gemfile'
 create_file 'Gemfile'
@@ -49,7 +50,6 @@ run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #
 
 get "#{@path}/config/solano.yml", 'config/solano.yml'
 get "#{@path}/lib/tasks/solano.rake", 'lib/tasks/solano.rake'
-prepend_to_file 'README.md', "[![](https://ci.solanolabs.com:443/caengineyarddev/REPLACE_WITH_BUILD_BAGDE)](https://ci.solanolabs.com:443/caengineyarddev/activities_api/suites/REPLACE_WITH_SUITE)\n\n"
 
 run 'bundle exec cap install'
 get "#{@path}/Capfile", 'Capfile', force: true
