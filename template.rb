@@ -82,6 +82,8 @@ environment do <<-'RUBY'
       g.test_framework :rspec, view_specs: false, routing_specs: false,
                                controller_specs: false
     end
+
+    config.log_tags = [:uuid, :remote_ip, :authorization]
 RUBY
 end
 
