@@ -1,4 +1,4 @@
-@path = "https://cagit.careerbuilder.com/zwelch/rails-api-template/tree/master/templates"
+@path = "https://raw.githubusercontent.com/zacharywelch/rails-api-template/master/templates"
 
 get "#{@path}/README.md", 'README.md'
 remove_file 'README.rdoc'
