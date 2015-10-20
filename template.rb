@@ -65,6 +65,8 @@ gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
 gsub_file "config/application.rb", /require "sprockets\/railtie"/, '# require "sprockets/railtie"'
 
+gsub_file "config/environments/production.rb", /:debug/, ':info'
+
 create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
   scope defaults: { format: :json } do
