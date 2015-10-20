@@ -2,7 +2,7 @@
 
 get "#{@path}/README.md", 'README.md'
 remove_file 'README.rdoc'
-gsub_file 'README.md', /README/, @app_name
+gsub_file 'README.md', /my_app_name/, @app_name
 
 create_file 'config/database.yml.sample', File.read('config/database.yml')
 create_file 'config/secrets.yml.sample', File.read('config/secrets.yml')
