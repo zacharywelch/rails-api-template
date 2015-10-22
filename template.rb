@@ -2,7 +2,7 @@
 
 get "#{@path}/README.md", 'README.md'
 remove_file 'README.rdoc'
-gsub_file 'README.md', /README/, @app_name
+gsub_file 'README.md', /my_app_name/, @app_name
 
 create_file 'config/database.yml.sample', File.read('config/database.yml')
 create_file 'config/secrets.yml.sample', File.read('config/secrets.yml')
@@ -64,6 +64,27 @@ gsub_file 'config/deploy.rb', /my_app_name/, @app_name
 gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
 gsub_file "config/application.rb", /require "sprockets\/railtie"/, '# require "sprockets/railtie"'
+
+gsub_file "config/environments/production.rb", /:debug/, ':info'
+
+get "#{@path}/config/initializers/exception_notification.rb", 'config/initializers/exception_notification.rb', force: true
+gsub_file "config/initializers/exception_notification.rb", /my_app_name/, @app_name
+gsub_file "config/environments/production.rb", /# config.action_mailer.raise_delivery_errors = false/, <<-'RUBY'
+# config.action_mailer.raise_delivery_errors = true
+
+  # Uncomment the following configurations for smtp delivery method via gmail.
+  # Add related user_name and password to config/secrets.yml
+  #  config.action_mailer.delivery_method = :smtp
+  #  config.action_mailer.smtp_settings = {
+  #    address:              'smtp.gmail.com',
+  #    port:                 587,
+  #    domain:               'gmail.com',
+  #    user_name:            Rails.application.secrets.exception_email['user_name'],
+  #    password:             Rails.application.secrets.exception_email['password'],
+  #    authentication:       'login',
+  #    enable_starttls_auto: true
+  #  }
+RUBY
 
 create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do

@@ -1,4 +1,4 @@
-# README
+# my_app_name
 
 [![](https://ci.solanolabs.com:443/caengineyarddev/REPLACE_WITH_BUILD_BAGDE)](https://ci.solanolabs.com:443/caengineyarddev/my_app_name/suites/REPLACE_WITH_SUITE)
 

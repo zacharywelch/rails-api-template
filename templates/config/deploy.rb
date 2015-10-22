@@ -18,5 +18,6 @@ namespace :deploy do
 
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
+  after 'deploy:updated', 'newrelic:notice_deployment'
 
 end
