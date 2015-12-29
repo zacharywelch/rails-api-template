@@ -42,10 +42,23 @@ gem_group :development, :test do
   gem 'byebug'
 end
 
+gem_group :test do
+  gem 'simplecov', require: false
+end
+
 run 'bundle install'
 
 generate 'rspec:install'
 generate 'responders:install'
+
+inject_into_file 'spec/rails_helper.rb',
+  after: /require\s+['|"]rspec\/rails['|"]/ do <<-'RUBY'
+
+
+require 'simplecov'
+SimpleCov.start
+RUBY
+end
 
 get "#{@path}/.gitignore", '.gitignore', force: true
 
