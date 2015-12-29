@@ -44,6 +44,7 @@ end
 
 gem_group :test do
   gem 'simplecov', require: false
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 run 'bundle install'
@@ -59,6 +60,12 @@ require 'simplecov'
 SimpleCov.start
 RUBY
 end
+
+gsub_file 'spec/rails_helper.rb',
+  %r{# Dir\[Rails\.root\.join\('spec/support/\*\*/\*\.rb'\)\]\.each { \|f\| require f }},
+  "Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }"
+
+get "#{@path}/spec/support/shoulda_helper.rb", 'spec/support/shoulda_helper.rb', force: true
 
 get "#{@path}/.gitignore", '.gitignore', force: true
 
