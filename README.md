@@ -24,6 +24,7 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [rails-api](https://github.com/rails-api/rails-api)
   - [jbuilder](https://github.com/rails/jbuilder)
   - [responders](https://github.com/plataformatec/responders)
+  - [paginate-responder](https://github.com/jgraichen/paginate-responder)
   - [faker](https://github.com/stympy/faker)
   - [kaminari](https://github.com/amatsuda/kaminari)
   - [annotate](https://github.com/ctran/annotate_models)
@@ -37,7 +38,6 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
   Several custom gems add behaviors needed by CareerBuilder APIs
   - [json_responder](https://cagit.careerbuilder.com/zwelch/json_responder)
-  - [pagination_responder](https://cagit.careerbuilder.com/zwelch/pagination_responder)
   - [rails_api_filters](https://cagit.careerbuilder.com/zwelch/rails_api_filters)
   - [rails_api_sortable](https://cagit.careerbuilder.com/zwelch/rails_api_sortable)
 
@@ -54,7 +54,7 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
 6. Configures rspec to exclude view, route, and controller specs
 
-7. Hooks up `JsonResponder` and `PaginationResponder` to responder chain
+7. Hooks up `JsonResponder` and `PaginateResponder` to responder chain
 
 8. Adds template for controller scaffold
 

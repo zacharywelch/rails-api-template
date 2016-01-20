@@ -1,5 +1,5 @@
 class ApplicationResponder < ActionController::Responder
   include Responders::HttpCacheResponder
   include Responders::JsonResponder
-  include Responders::PaginationResponder
+  include Responders::PaginateResponder
 end
