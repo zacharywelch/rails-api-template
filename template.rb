@@ -70,6 +70,13 @@ get "#{@path}/spec/support/shoulda_helper.rb", 'spec/support/shoulda_helper.rb',
 get "#{@path}/.gitignore", '.gitignore', force: true
 
 run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #{@app_name}"
+gsub_file "config/newrelic.yml", /log_level: info/, <<-'RUBY'
+log_level: info
+
+  # Prevent NewRelic to track requests that match the following criteria
+  rules:
+    ignore_url_regexes: ['AVAILABILITY_MONITORING']
+RUBY
 
 get "#{@path}/config/solano.yml", 'config/solano.yml'
 get "#{@path}/lib/tasks/solano.rake", 'lib/tasks/solano.rake'
