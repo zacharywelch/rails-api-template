@@ -14,7 +14,6 @@ add_source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'rails-api'
-gem 'sqlite3'
 gem 'jbuilder'
 gem 'responders'
 gem 'json_responder', git: 'git@cagit.careerbuilder.com:zwelch/json_responder.git'
@@ -40,11 +39,17 @@ gem_group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'byebug'
+  gem 'sqlite3'
 end
 
 gem_group :test do
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.0'
+end
+
+gem_group :development, :staging, :production do
+  gem 'tiny_tds', '~> 0.7.0'
+  gem 'activerecord-sqlserver-adapter'
 end
 
 run 'bundle install'
