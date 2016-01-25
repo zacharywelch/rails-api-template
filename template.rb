@@ -119,6 +119,9 @@ config.action_mailer.raise_delivery_errors = true
   }
 RUBY
 
+
+gsub_file "config/environments/production.rb", /# config\.log_tags = \[ :subdomain, :uuid \]/, "config.log_tags = [:uuid, :remote_ip, :authorization]"
+
 create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
   scope defaults: { format: :json } do
