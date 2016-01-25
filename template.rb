@@ -148,6 +148,8 @@ get "#{@path}/lib/application_responder.rb", 'lib/application_responder.rb', for
 get "#{@path}/app/controllers/application_controller.rb", 'app/controllers/application_controller.rb', force: true
 get "#{@path}/lib/templates/rails/responders_controller/controller.rb", 'lib/templates/rails/responders_controller/controller.rb', force: true
 
+create_file 'config/environments/staging.rb', File.read('config/environments/production.rb')
+
 after_bundle do
   git :init
   git add: "."
