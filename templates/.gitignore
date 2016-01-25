@@ -6,6 +6,8 @@ capybara-*.html
 /log
 /tmp
 doc/
+/db/*.sqlite
+/db/*.sqlite-journal
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -57,3 +59,4 @@ config/secrets.yml
 .DS_Store
 .idea
 .solano*
+.gitconfig
