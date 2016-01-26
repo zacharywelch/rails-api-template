@@ -1,8 +1,10 @@
-require 'timeout'
-require 'etc'
-require 'base64'
-
 namespace :solano do
+  desc "Link config files to samples"
+  task :link_config_files do
+    system("cd config && ln -s database.yml.sample database.yml")
+    system("cd config && ln -s secrets.yml.sample secrets.yml")
+  end
+
   desc 'Run post-build script'
   task :post_build_hook do
     puts 'Run post-build script'

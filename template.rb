@@ -14,7 +14,6 @@ add_source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'rails-api'
-gem 'sqlite3'
 gem 'jbuilder'
 gem 'responders'
 gem 'json_responder', git: 'git@cagit.careerbuilder.com:zwelch/json_responder.git'
@@ -28,6 +27,7 @@ gem 'solano'
 gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rvm'
+gem 'exception_notification'
 
 append_to_file 'Gemfile', "\n\n\n"
 
@@ -40,11 +40,17 @@ gem_group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'byebug'
+  gem 'sqlite3'
 end
 
 gem_group :test do
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.0'
+end
+
+gem_group :development, :staging, :production do
+  gem 'tiny_tds', '~> 0.7.0'
+  gem 'activerecord-sqlserver-adapter'
 end
 
 run 'bundle install'
@@ -97,21 +103,24 @@ gsub_file "config/environments/production.rb", /:debug/, ':info'
 get "#{@path}/config/initializers/exception_notification.rb", 'config/initializers/exception_notification.rb', force: true
 gsub_file "config/initializers/exception_notification.rb", /my_app_name/, @app_name
 gsub_file "config/environments/production.rb", /# config.action_mailer.raise_delivery_errors = false/, <<-'RUBY'
-# config.action_mailer.raise_delivery_errors = true
+config.action_mailer.raise_delivery_errors = true
 
   # Uncomment the following configurations for smtp delivery method via gmail.
   # Add related user_name and password to config/secrets.yml
-  #  config.action_mailer.delivery_method = :smtp
-  #  config.action_mailer.smtp_settings = {
-  #    address:              'smtp.gmail.com',
-  #    port:                 587,
-  #    domain:               'gmail.com',
-  #    user_name:            Rails.application.secrets.exception_email['user_name'],
-  #    password:             Rails.application.secrets.exception_email['password'],
-  #    authentication:       'login',
-  #    enable_starttls_auto: true
-  #  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            Rails.application.secrets.exception_email['user_name'],
+    password:             Rails.application.secrets.exception_email['password'],
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
 RUBY
+
+
+gsub_file "config/environments/production.rb", /# config\.log_tags = \[ :subdomain, :uuid \]/, "config.log_tags = [:uuid, :remote_ip, :authorization]"
 
 create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
@@ -138,6 +147,8 @@ end
 get "#{@path}/lib/application_responder.rb", 'lib/application_responder.rb', force: true
 get "#{@path}/app/controllers/application_controller.rb", 'app/controllers/application_controller.rb', force: true
 get "#{@path}/lib/templates/rails/responders_controller/controller.rb", 'lib/templates/rails/responders_controller/controller.rb', force: true
+
+create_file 'config/environments/staging.rb', File.read('config/environments/production.rb')
 
 after_bundle do
   git :init
