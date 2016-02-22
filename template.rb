@@ -150,6 +150,9 @@ get "#{@path}/lib/templates/rails/responders_controller/controller.rb", 'lib/tem
 
 create_file 'config/environments/staging.rb', File.read('config/environments/production.rb')
 
+get "#{@path}/.codeclimate.yml", '.codeclimate.yml'
+get "#{@path}/.rubocop.yml", '.rubocop.yml'
+
 after_bundle do
   git :init
   git add: "."

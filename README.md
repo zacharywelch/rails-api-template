@@ -64,12 +64,22 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
 11. Configures Capistrano
 
-12. Creates sample config files and git ignores the original ones
+12. Configures Code Climate
+
+13. Creates sample config files and git ignores the original ones
   - config/database.yml
   - config/secrets.yml
 
-13. Replaces README with markdown
+14. Replaces README with markdown
 
-14. Customizes .gitignore file
+15. Customizes .gitignore file
 
-15. Creates initial github commit
+16. Creates initial github commit
+
+## Additional steps
+
+### Code Climate
+Replace the badge placeholders in `README.md` with the markdown snippets from Code Climate.
+
+### Solano
+Replace the badge placeholders in `README.md` with the markdown snippets from Solano.
