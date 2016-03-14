@@ -12,7 +12,7 @@ create_file 'Gemfile'
 
 add_source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '~> 4.2.5'
 gem 'rails-api'
 gem 'jbuilder'
 gem 'responders'

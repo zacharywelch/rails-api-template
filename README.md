@@ -34,6 +34,8 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [capistrano-rvm](https://github.com/capistrano/rvm)
   - [capistrano-bundler](https://github.com/capistrano/bundler)
   - [solano](https://github.com/solanolabs/solano)
+  - [okcomputer](https://github.com/sportngin/okcomputer)
+  - [codeclimate-test-reporter](https://github.com/codeclimate/ruby-test-reporter)
 
   Several custom gems add behaviors needed by CareerBuilder APIs
   - [json_responder](https://cagit.careerbuilder.com/zwelch/json_responder)
