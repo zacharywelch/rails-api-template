@@ -46,6 +46,7 @@ end
 gem_group :test do
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.0'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 gem_group :development, :staging, :production do
@@ -61,6 +62,8 @@ generate 'responders:install'
 inject_into_file 'spec/rails_helper.rb',
   after: /require\s+['|"]rspec\/rails['|"]/ do <<-'RUBY'
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 
 require 'simplecov'
 SimpleCov.start
