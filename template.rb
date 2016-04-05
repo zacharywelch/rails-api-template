@@ -52,7 +52,7 @@ end
 
 gem_group :development, :staging, :production do
   gem 'tiny_tds', '~> 0.7.0'
-  gem 'activerecord-sqlserver-adapter'
+  gem 'activerecord-sqlserver-adapter', '~> 4.2.10'
 end
 
 run 'bundle install'
@@ -99,6 +99,7 @@ gsub_file "config/environments/production.rb", /:debug/, ':info'
 
 get "#{@path}/config/initializers/okcomputer.rb", 'config/initializers/okcomputer.rb', force: true
 get "#{@path}/config/initializers/exception_notification.rb", 'config/initializers/exception_notification.rb', force: true
+get "#{@path}/config/initializers/activerecord_sql_adapter.rb", 'config/initializers/activerecord_sql_adapter.rb', force: true
 gsub_file "config/initializers/exception_notification.rb", /my_app_name/, @app_name
 gsub_file "config/environments/production.rb", /# config.action_mailer.raise_delivery_errors = false/, <<-'RUBY'
 config.action_mailer.raise_delivery_errors = true
