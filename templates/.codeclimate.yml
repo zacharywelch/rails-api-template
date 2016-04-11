@@ -14,6 +14,7 @@ engines:
     enabled: true
   rubocop:
     enabled: true
+    config: config/.rubocop.yml
 ratings:
   paths:
   - "**.rb"
@@ -23,4 +24,4 @@ exclude_paths:
 - "db/**/*"
 - "spec/**/*"
 - "Gemfile"
-- "vendor/gems/**/*"
+- "vendor/**/*"
