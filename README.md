@@ -42,12 +42,14 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [paginate-responder](https://github.com/zacharywelch/paginate-responder)
   - [rails_api_filters](https://cagit.careerbuilder.com/zwelch/rails_api_filters)
   - [rails_api_sortable](https://cagit.careerbuilder.com/zwelch/rails_api_sortable)
+  - [partner_authentication](https://cagit.careerbuilder.com/zwelch/partner_authentication)
 
 2. Runs `bundle`
 
 3. Runs the following generators
   - `rspec:install`
   - `responders:install`
+  - `partner_authentication:install`
   - `cap install`
 
 4. Removes `ActionView` and `Sprockets` from stack
