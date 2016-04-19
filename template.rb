@@ -20,6 +20,7 @@ gem 'paginate-responder', git: 'https://github.com/zacharywelch/paginate-respond
 gem 'json_responder', git: 'git@cagit.careerbuilder.com:zwelch/json_responder.git'
 gem 'rails_api_filters', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_filters.git'
 gem 'rails_api_sortable', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_sortable.git'
+gem 'partner_authentication', git: 'git@cagit.careerbuilder.com:zwelch/partner_authentication.git'
 gem 'faker'
 gem 'kaminari'
 gem 'newrelic_rpm'
@@ -59,6 +60,10 @@ run 'bundle install'
 
 generate 'rspec:install'
 generate 'responders:install'
+generate 'partner_authentication:install'
+
+rake 'db:migrate'
+rake 'db:authentication'
 
 inject_into_file 'spec/rails_helper.rb',
   after: /require\s+['|"]rspec\/rails['|"]/ do <<-'RUBY'

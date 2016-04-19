@@ -42,41 +42,45 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [paginate-responder](https://github.com/zacharywelch/paginate-responder)
   - [rails_api_filters](https://cagit.careerbuilder.com/zwelch/rails_api_filters)
   - [rails_api_sortable](https://cagit.careerbuilder.com/zwelch/rails_api_sortable)
+  - [partner_authentication](https://cagit.careerbuilder.com/zwelch/partner_authentication)
 
 2. Runs `bundle`
 
 3. Runs the following generators
   - `rspec:install`
   - `responders:install`
+  - `partner_authentication:install`
   - `cap install`
 
-4. Removes `ActionView` and `Sprockets` from stack
+4. Adds a sample [Partner ID](https://cagit.careerbuilder.com/zwelch/partner_authentication) for development
 
-5. Adds json as default format for routes
+5. Removes `ActionView` and `Sprockets` from stack
 
-6. Configures rspec to exclude view, route, and controller specs
+6. Adds json as default format for routes
 
-7. Hooks up `JsonResponder` and `PaginateResponder` to responder chain
+7. Configures rspec to exclude view, route, and controller specs
 
-8. Adds template for controller scaffold
+8. Hooks up `JsonResponder` and `PaginateResponder` to responder chain
 
-9. Configures New Relic
+9. Adds template for controller scaffold
 
-10. Configures Solano
+10. Configures New Relic
 
-11. Configures Capistrano
+11. Configures Solano
 
-12. Configures Code Climate
+12. Configures Capistrano
 
-13. Creates sample config files and git ignores the original ones
+13. Configures Code Climate
+
+14. Creates sample config files and git ignores the original ones
   - config/database.yml
   - config/secrets.yml
 
-14. Replaces README with markdown
+15. Replaces README with markdown
 
-15. Customizes .gitignore file
+16. Customizes .gitignore file
 
-16. Creates initial github commit
+17. Creates initial github commit
 
 ## Additional steps
 
