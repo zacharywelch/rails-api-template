@@ -71,6 +71,24 @@ SimpleCov.start
 RUBY
 end
 
+inject_into_file 'config/application.rb',
+  after: /require\s+File.expand_path\(['|"]..\/boot['|"],\s+__FILE__\)/ do <<-'RUBY'
+
+require 'ipaddr'
+RUBY
+end
+
+inject_into_file 'config/application.rb',
+                 after: /config.active_record.raise_in_transactional_callbacks = true/ do <<-'RUBY'
+
+
+    # Only set localhost IPv4 and IPv6 as trusted proxies
+    config.action_dispatch.trusted_proxies = %w(127.0.0.1 ::1).map { |proxy| IPAddr.new(proxy) }
+RUBY
+end
+
+#config.active_record.raise_in_transactional_callbacks = true
+
 gsub_file 'spec/rails_helper.rb',
   %r{# Dir\[Rails\.root\.join\('spec/support/\*\*/\*\.rb'\)\]\.each { \|f\| require f }},
   "Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }"
@@ -102,6 +120,7 @@ gsub_file "config/environments/production.rb", /:debug/, ':info'
 get "#{@path}/config/initializers/okcomputer.rb", 'config/initializers/okcomputer.rb', force: true
 get "#{@path}/config/initializers/exception_notification.rb", 'config/initializers/exception_notification.rb', force: true
 get "#{@path}/config/initializers/activerecord_sql_adapter.rb", 'config/initializers/activerecord_sql_adapter.rb', force: true
+get "#{@path}/config/initializers/remote_ip.rb", 'config/initializers/remote_ip.rb', force: true
 gsub_file "config/initializers/exception_notification.rb", /my_app_name/, @app_name
 gsub_file "config/environments/production.rb", /# config.action_mailer.raise_delivery_errors = false/, <<-'RUBY'
 config.action_mailer.raise_delivery_errors = true
