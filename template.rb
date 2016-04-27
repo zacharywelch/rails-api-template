@@ -16,10 +16,10 @@ gem 'rails', '~> 4.2.5'
 gem 'rails-api'
 gem 'jbuilder'
 gem 'responders'
-#gem 'paginate-responder', git: 'git@github.com:zacharywelch/paginate-responder.git', branch: 'page-header'
-#gem 'json_responder', git: 'git@cagit.careerbuilder.com:zwelch/json_responder.git'
-#gem 'rails_api_filters', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_filters.git'
-#gem 'rails_api_sortable', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_sortable.git'
+gem 'paginate-responder', git: 'git@github.com:zacharywelch/paginate-responder.git', branch: 'page-header'
+gem 'json_responder', git: 'git@cagit.careerbuilder.com:zwelch/json_responder.git'
+gem 'rails_api_filters', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_filters.git'
+gem 'rails_api_sortable', git: 'git@cagit.careerbuilder.com:zwelch/rails_api_sortable.git'
 gem 'faker'
 gem 'kaminari'
 gem 'newrelic_rpm'
@@ -117,7 +117,7 @@ gsub_file "config/environments/production.rb", /:debug/, ':info'
 get "#{@path}/config/initializers/okcomputer.rb", 'config/initializers/okcomputer.rb', force: true
 get "#{@path}/config/initializers/exception_notification.rb", 'config/initializers/exception_notification.rb', force: true
 get "#{@path}/config/initializers/activerecord_sql_adapter.rb", 'config/initializers/activerecord_sql_adapter.rb', force: true
-#get "#{@path}/config/initializers/remote_ip.rb", 'config/initializers/remote_ip.rb', force: true
+get "#{@path}/config/initializers/remote_ip.rb", 'config/initializers/remote_ip.rb', force: true
 gsub_file "config/initializers/exception_notification.rb", /my_app_name/, @app_name
 gsub_file "config/environments/production.rb", /# config.action_mailer.raise_delivery_errors = false/, <<-'RUBY'
 config.action_mailer.raise_delivery_errors = true
