@@ -119,7 +119,7 @@ get "#{@path}/config/initializers/exception_notification.rb", 'config/initialize
 get "#{@path}/config/initializers/activerecord_sql_adapter.rb", 'config/initializers/activerecord_sql_adapter.rb', force: true
 get "#{@path}/config/initializers/remote_ip.rb", 'config/initializers/remote_ip.rb', force: true
 gsub_file "config/initializers/exception_notification.rb", /my_app_name/, @app_name
-gsub_file "config/environments/production.rb", /# config.action_mailer.raise_delivery_errors = false/, <<-'RUBY'
+gsub_file "config/environments/production.rb", /# config.action_mailer.raise_delivery_errors = false\n/, <<-'RUBY'
 config.action_mailer.raise_delivery_errors = true
 
   # Uncomment the following configurations for smtp delivery method via gmail.
@@ -136,8 +136,8 @@ config.action_mailer.raise_delivery_errors = true
   }
 RUBY
 
-
-gsub_file "config/environments/production.rb", /# config\.log_tags = \[ :subdomain, :uuid \]/, "config.log_tags = [:uuid, :remote_ip, :authorization]"
+gsub_file "config/environments/production.rb", /# Prepend all log lines with the following tags.\n/, ""
+gsub_file "config/environments/production.rb", /# config\.log_tags = \[ :subdomain, :uuid \]\n/, ""
 
 create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
@@ -157,7 +157,10 @@ environment do <<-'RUBY'
                                controller_specs: false
     end
 
-    config.log_tags = [:uuid, :remote_ip, :authorization]
+    # Prepend all log lines with the following tags.
+    config.log_tags = [:uuid,
+                       :remote_ip,
+                       lambda { |req| req.authorization.split(':').first if req.authorization }]
 RUBY
 end
 
