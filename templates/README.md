@@ -1,31 +1,27 @@
 # my_app_name
 
-**TODO** replace badges with markdown from Code Climate and Solano
+**TODO** replace badges with markdown from Code Climate and TeamCity
 
-[![](https://ci.solanolabs.com:443/caengineyarddev/REPLACE_WITH_BUILD_BAGDE)](https://ci.solanolabs.com:443/caengineyarddev/my_app_name/suites/REPLACE_WITH_SUITE)
-[![Code Climate](https://codeclimate.cb.com/REPLACE_WITH_BADGE/gpa.svg)](https://codeclimate.cb.com/REPLACE_WITH_BADGE/feed)
-[![Test Coverage](https://codeclimate.cb.com/REPLACE_WITH_BADGE/coverage.svg)](https://codeclimate.cb.com/REPLACE_WITH_BADGE/coverage)
-[![Issue Count](https://codeclimate.cb.com/REPLACE_WITH_BADGE/issue_count.svg)](https://codeclimate.cb.com/REPLACE_WITH_BADGE/feed)
+[![](https://teamcity.cb.com/app/rest/builds/buildType:REPLACE_WITH_BUILD_TYPE_ID/statusIcon)](https://teamcity.cb.com/viewType.html?buildTypeId=REPLACE_WITH_BUILD_TYPE_ID)
+[![Code Climate](https://codeclimate.cb.com/repos/576d31970259bf56a7000e8c/badges/REPLACE_WITH_BUILD_BADGE/gpa.svg)](https://codeclimate.cb.com/repos/REPLACE_WITH_BADGE/feed)
+[![Test Coverage](https://codeclimate.cb.com/repos/576d31970259bf56a7000e8c/badges/REPLACE_WITH_BADGE/coverage.svg)](https://codeclimate.cb.com/repos/REPLACE_WITH_BADGE/coverage)
+[![Issue Count](https://codeclimate.cb.com/repos/576d31970259bf56a7000e8c/badges/REPLACE_WITH_BADGE/issue_count.svg)](https://codeclimate.cb.com/repos/REPLACE_WITH_BADGE/feed)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+**TODO** Small description.
 
-Things you may want to cover:
+## Getting Started
+See our [getting started with Rails Api](https://cagit.careerbuilder.com/CorpAppsCB/wiki/wiki/GettingStartedRailsApi) documentation.
 
-* Ruby version
+## Installation
+See our [installation](INSTALLATION.md) steps.
 
-* System dependencies
+## Technology Stack
+See [rails-api-template](https://cagit.careerbuilder.com/zwelch/rails-api-template).
 
-* Configuration
+## Contents
+1. **TODO** To be described
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+## Contributing
+API design is a team sport. We welcome [contributions](CONTRIBUTING.md).

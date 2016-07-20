@@ -1,8 +1,12 @@
 @path = "https://raw.githubusercontent.com/zacharywelch/rails-api-template/master/templates"
 
-get "#{@path}/README.md", 'README.md'
 remove_file 'README.rdoc'
+get "#{@path}/README.md", 'README.md'
+get "#{@path}/INSTALLATION.md", 'INSTALLATION.md'
+get "#{@path}/CONTRIBUTING.md", 'CONTRIBUTING.md'
 gsub_file 'README.md', /my_app_name/, @app_name
+gsub_file 'INSTALLATION.md', /my_app_name/, @app_name
+gsub_file 'CONTRIBUTING.md', /my_app_name/, @app_name
 
 create_file 'config/database.yml.sample', File.read('config/database.yml')
 create_file 'config/secrets.yml.sample', File.read('config/secrets.yml')
