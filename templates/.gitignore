@@ -58,5 +58,4 @@ config/secrets.yml
 .project
 .DS_Store
 .idea
-.solano*
 .gitconfig
