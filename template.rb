@@ -28,10 +28,6 @@ gem 'partner_authentication', git: 'git@cagit.careerbuilder.com:zwelch/partner_a
 gem 'faker'
 gem 'kaminari'
 gem 'newrelic_rpm'
-gem 'solano'
-gem 'capistrano'
-gem 'capistrano-bundler'
-gem 'capistrano-rvm'
 gem 'exception_notification'
 gem 'okcomputer'
 
@@ -90,17 +86,8 @@ get "#{@path}/.gitignore", '.gitignore', force: true
 
 run "newrelic install --license_key='d445e66d0037c4d9dfe1eb38137ff88c0c606455' #{@app_name}"
 
-get "#{@path}/config/solano.yml", 'config/solano.yml'
-get "#{@path}/lib/tasks/solano.rake", 'lib/tasks/solano.rake'
 get "#{@path}/.codeclimate.yml", '.codeclimate.yml'
 get "#{@path}/config/.rubocop.yml", 'config/.rubocop.yml'
-
-run 'bundle exec cap install'
-get "#{@path}/Capfile", 'Capfile', force: true
-get "#{@path}/config/deploy.rb", 'config/deploy.rb', force: true
-get "#{@path}/config/deploy/production.rb", 'config/deploy/production.rb', force: true
-get "#{@path}/config/deploy/staging.rb", 'config/deploy/staging.rb', force: true
-gsub_file 'config/deploy.rb', /my_app_name/, @app_name
 
 inject_into_file 'config/application.rb',
                  after: /require\s+File.expand_path\(['|"]..\/boot['|"],\s+__FILE__\)/ do <<-'RUBY'
