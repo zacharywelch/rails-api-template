@@ -81,6 +81,7 @@ gsub_file 'spec/rails_helper.rb',
   "Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }"
 
 get "#{@path}/spec/support/shoulda_helper.rb", 'spec/support/shoulda_helper.rb', force: true
+get "#{@path}/lib/tasks/sample_data.rake", 'lib/tasks/sample_data.rake'
 
 get "#{@path}/.gitignore", '.gitignore', force: true
 
