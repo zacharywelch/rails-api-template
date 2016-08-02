@@ -30,10 +30,6 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [rspec-rails](https://github.com/rspec/rspec-rails)
   - [factory_girl_rails](https://github.com/thoughtbot/factory_girl_rails)
   - [byebug](https://github.com/deivid-rodriguez/byebug)
-  - [capistrano](https://github.com/capistrano/capistrano)
-  - [capistrano-rvm](https://github.com/capistrano/rvm)
-  - [capistrano-bundler](https://github.com/capistrano/bundler)
-  - [solano](https://github.com/solanolabs/solano)
   - [okcomputer](https://github.com/sportngin/okcomputer)
   - [codeclimate-test-reporter](https://github.com/codeclimate/ruby-test-reporter)
 
@@ -50,7 +46,6 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - `rspec:install`
   - `responders:install`
   - `partner_authentication:install`
-  - `cap install`
 
 4. Adds a sample [Partner ID](https://cagit.careerbuilder.com/zwelch/partner_authentication) for development
 
@@ -66,26 +61,22 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
 10. Configures New Relic
 
-11. Configures Solano
+11. Configures Code Climate
 
-12. Configures Capistrano
-
-13. Configures Code Climate
-
-14. Creates sample config files and git ignores the original ones
+12. Creates sample config files and git ignores the original ones
   - config/database.yml
   - config/secrets.yml
 
-15. Replaces README with markdown
+13. Replaces README with markdown
 
-16. Customizes .gitignore file
+14. Customizes .gitignore file
 
-17. Creates initial github commit
+15. Creates initial github commit
 
 ## Additional steps
 
 ### Code Climate
 Replace the badge placeholders in `README.md` with the markdown snippets from Code Climate.
 
-### Solano
-Replace the badge placeholders in `README.md` with the markdown snippets from Solano.
+### TeamCity
+Replace the badge placeholders in `README.md` with the markdown snippets from TeamCity.
