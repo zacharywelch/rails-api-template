@@ -22,6 +22,5 @@ See [rails-api-template](https://cagit.careerbuilder.com/zwelch/rails-api-templa
 ## Contents
 1. **TODO** To be described
 
-```
 ## Contributing
 API design is a team sport. We welcome [contributions](CONTRIBUTING.md).
