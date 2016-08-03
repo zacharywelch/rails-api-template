@@ -40,7 +40,6 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   Several custom gems add behaviors needed by CareerBuilder APIs
   - [json_responder](https://cagit.careerbuilder.com/zwelch/json_responder)
   - [paginate-responder](https://cagit.careerbuilder.com/zwelch/paginate-responder)
-  - [rails_api_filters](https://cagit.careerbuilder.com/zwelch/rails_api_filters)
   - [rails_api_sortable](https://cagit.careerbuilder.com/zwelch/rails_api_sortable)
   - [partner_authentication](https://cagit.careerbuilder.com/zwelch/partner_authentication)
 
