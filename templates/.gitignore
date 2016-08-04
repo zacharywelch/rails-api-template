@@ -3,7 +3,7 @@
 *.rbc
 capybara-*.html
 .rspec
-/log
+/log/*.log
 /tmp
 doc/
 /db/*.sqlite
@@ -59,3 +59,4 @@ config/secrets.yml
 .DS_Store
 .idea
 .gitconfig
+.byebug_history

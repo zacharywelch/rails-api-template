@@ -41,6 +41,9 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [exception_notification](https://github.com/smartinez87/exception_notification)
   - [byebug](https://github.com/deivid-rodriguez/byebug)
   - [okcomputer](https://github.com/sportngin/okcomputer)
+  - [lograge](https://github.com/roidrage/lograge)
+  - [fluentd](https://github.com/fluent/fluentd)
+  - [fluent-plugin-record-modifier](https://github.com/repeatedly/fluent-plugin-record-modifier)
 
   Several custom gems add behaviors needed by CareerBuilder APIs
   - [json_responder](https://cagit.careerbuilder.com/zwelch/json_responder)
@@ -71,15 +74,17 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
 11. Configures Code Climate
 
-12. Creates sample config files and git ignores the original ones
+12. Configures lograge and fluentd, to be consummed from Sumo Logic
+
+13. Creates sample config files and git ignores the original ones
   - config/database.yml
   - config/secrets.yml
 
-13. Replaces README with markdown
+14. Replaces README with markdown
 
-14. Customizes .gitignore file
+15. Customizes .gitignore file
 
-15. Creates initial github commit
+16. Creates initial github commit
 
 ## Additional steps
 
