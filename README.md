@@ -22,16 +22,25 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
 
 1. Adds the following gems
   - [rails-api](https://github.com/rails-api/rails-api)
+  - [rails](https://github.com/rails/rails)
   - [jbuilder](https://github.com/rails/jbuilder)
   - [responders](https://github.com/plataformatec/responders)
   - [faker](https://github.com/stympy/faker)
   - [kaminari](https://github.com/amatsuda/kaminari)
+  - [spring](https://github.com/rails/spring)
+  - [sqlite3](https://github.com/sparklemotion/sqlite3-ruby)
+  - [activerecord-sqlserver-adapter](https://github.com/rails-sqlserver/activerecord-sqlserver-adapter)
+  - [tiny_tds](https://github.com/rails-sqlserver/tiny_tds)
   - [annotate](https://github.com/ctran/annotate_models)
   - [rspec-rails](https://github.com/rspec/rspec-rails)
   - [factory_girl_rails](https://github.com/thoughtbot/factory_girl_rails)
+  - [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+  - [simplecov](https://github.com/colszowka/simplecov)
+  - [codeclimate-test-reporter](https://github.com/codeclimate/ruby-test-reporter)
+  - [newrelic_rpm](https://github.com/newrelic/rpm)
+  - [exception_notification](https://github.com/smartinez87/exception_notification)
   - [byebug](https://github.com/deivid-rodriguez/byebug)
   - [okcomputer](https://github.com/sportngin/okcomputer)
-  - [codeclimate-test-reporter](https://github.com/codeclimate/ruby-test-reporter)
 
   Several custom gems add behaviors needed by CareerBuilder APIs
   - [json_responder](https://cagit.careerbuilder.com/zwelch/json_responder)
