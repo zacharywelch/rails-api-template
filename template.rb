@@ -109,6 +109,10 @@ gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
 gsub_file "config/application.rb", /require "sprockets\/railtie"/, '# require "sprockets/railtie"'
 
+gsub_file 'config/environments/development.rb', /consider_all_requests_local(\s)*= true/, 'consider_all_requests_local       = false'
+gsub_file 'config/environments/test.rb', /consider_all_requests_local(\s)*= true/, 'consider_all_requests_local       = false'
+gsub_file 'config/environments/test.rb', /action_dispatch.show_exceptions = false/, 'action_dispatch.show_exceptions = true'
+
 gsub_file "config/environments/production.rb", /:debug/, ':info'
 
 get "#{@path}/config/initializers/okcomputer.rb", 'config/initializers/okcomputer.rb', force: true
