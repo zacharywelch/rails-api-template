@@ -29,6 +29,9 @@ gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'exception_notification'
 gem 'okcomputer'
+gem 'lograge'
+gem 'fluentd'
+gem 'fluent-plugin-record-modifier'
 
 append_to_file 'Gemfile', "\n\n\n"
 
@@ -137,9 +140,6 @@ config.action_mailer.raise_delivery_errors = true
   }
 RUBY
 
-gsub_file "config/environments/production.rb", /# Prepend all log lines with the following tags.\n/, ""
-gsub_file "config/environments/production.rb", /# config\.log_tags = \[ :subdomain, :uuid \]\n/, ""
-
 create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
   scope defaults: { format: :json } do
@@ -158,12 +158,45 @@ environment do <<-'RUBY'
                                controller_specs: false
     end
 
-    # Prepend all log lines with the following tags.
-    config.log_tags = [:uuid,
-                       :remote_ip,
-                       lambda { |req| req.authorization.split(':').first if req.authorization }]
+    # Lograge configuration
+    config.lograge.enabled = true
+    config.lograge.formatter = Lograge::Formatters::Json.new
+    config.lograge.custom_options = lambda do |event|
+      {
+        date_time: Time.current,
+        uuid: event.payload[:uuid],
+        user_id: event.payload[:user_id],
+        impersonated_user_id: event.payload[:impersonated_user_id],
+        partner_id: event.payload[:partner_id],
+        remote_ip: event.payload[:remote_ip],
+        params: event.payload[:params]
+          .except('controller', 'action', 'locale', 'format', '_method', 'id')
+      }
+    end
 RUBY
 end
+
+inject_into_file 'config/environments/development.rb', after: /# config.action_view.raise_on_missing_translations = true\n/ do <<-'RUBY'
+
+  # Lograge configuration
+  config.lograge.keep_original_rails_log = true
+  config.lograge.logger = ActiveSupport::Logger.new "#{Rails.root}/log/#{Rails.env}_lograge.log"
+RUBY
+end
+
+inject_into_file 'config/environments/test.rb', after: /# config.action_view.raise_on_missing_translations = true\n/ do <<-'RUBY'
+
+  # Lograge configuration
+  config.lograge.keep_original_rails_log = true
+  config.lograge.logger = ActiveSupport::Logger.new "#{Rails.root}/log/#{Rails.env}_lograge.log"
+RUBY
+end
+
+gsub_file "config/environments/production.rb", /# Prepend all log lines with the following tags.\n/, ""
+gsub_file "config/environments/production.rb", /# config\.log_tags = \[ :subdomain, :uuid \]\n/, ""
+gsub_file "config/environments/production.rb", /config.log_formatter =/, "# config.log_formatter ="
+get "#{@path}/app/controllers/concerns/logging.rb", 'app/controllers/concerns/logging.rb'
+get "#{@path}/config/fluentd.conf", 'config/fluentd.conf'
 
 get "#{@path}/lib/application_responder.rb", 'lib/application_responder.rb', force: true
 get "#{@path}/app/controllers/application_controller.rb", 'app/controllers/application_controller.rb', force: true
