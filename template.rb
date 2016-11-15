@@ -138,6 +138,8 @@ config.action_mailer.raise_delivery_errors = true
     authentication:       'login',
     enable_starttls_auto: true
   }
+
+  config.middleware.use Rack::Deflater
 RUBY
 
 create_file "config/routes.rb", force: true do <<-'RUBY'
