@@ -2,7 +2,7 @@
 
 A rails [application template](http://guides.rubyonrails.org/rails_application_templates.html) for APIs.
 
-To see a sample of using Rails as an API check out [rails-api](https://cagit.careerbuilder.com/zwelch/rails-api) sample.
+To see a sample of using Rails as an API check out [rails-api-sample](https://cagit.careerbuilder.com/CorpAppsCB/rails-api-sample).
 
 ## Installation
 
@@ -46,10 +46,10 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [fluent-plugin-record-modifier](https://github.com/repeatedly/fluent-plugin-record-modifier)
 
   Several custom gems add behaviors needed by CareerBuilder APIs
-  - [json_responder](https://cagit.careerbuilder.com/zwelch/json_responder)
-  - [paginate-responder](https://cagit.careerbuilder.com/zwelch/paginate-responder)
-  - [rails_api_sortable](https://cagit.careerbuilder.com/zwelch/rails_api_sortable)
-  - [partner_authentication](https://cagit.careerbuilder.com/zwelch/partner_authentication)
+  - [json_responder](https://cagit.careerbuilder.com/CorpAppsCB/json_responder)
+  - [paginate-responder](https://cagit.careerbuilder.com/CorpAppsCB/paginate-responder)
+  - [rails_api_sortable](https://cagit.careerbuilder.com/CorpAppsCB/rails_api_sortable)
+  - [partner_authentication](https://cagit.careerbuilder.com/CorpAppsCB/partner_authentication)
 
 2. Runs `bundle`
 
@@ -58,7 +58,7 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - `responders:install`
   - `partner_authentication:install`
 
-4. Adds a sample [Partner ID](https://cagit.careerbuilder.com/zwelch/partner_authentication) for development
+4. Adds a sample [Partner ID](https://cagit.careerbuilder.com/CorpAppsCB/partner_authentication) for development
 
 5. Removes `ActionView` and `Sprockets` from stack
 

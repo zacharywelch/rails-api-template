@@ -50,7 +50,7 @@ Run tests
 
 ## Testing in Postman
 
-While testing in Postman you'll need to pass in an authorization header or you'll receive 401 Unauthorized. This is because `my_app_name` uses [partner authentication](https://cagit.careerbuilder.com/zwelch/partner_authentication).  If you've run the `db:authentication` rake task, a partner `foo:bar` was created for you already.
+While testing in Postman you'll need to pass in an authorization header or you'll receive 401 Unauthorized. This is because `my_app_name` uses [partner authentication](https://cagit.careerbuilder.com/CorpAppsCB/partner_authentication).  If you've run the `db:authentication` rake task, a partner `foo:bar` was created for you already.
 
 ```http
 GET http://localhost:3000
