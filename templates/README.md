@@ -17,7 +17,7 @@ See our [getting started with Rails Api](https://cagit.careerbuilder.com/CorpApp
 See our [installation](INSTALLATION.md) steps.
 
 ## Technology Stack
-See [rails-api-template](https://cagit.careerbuilder.com/zwelch/rails-api-template).
+See [rails-api-template](https://cagit.careerbuilder.com/CorpAppsCB/rails-api-template).
 
 ## Contents
 1. **TODO** To be described
