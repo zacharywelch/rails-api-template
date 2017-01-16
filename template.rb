@@ -70,9 +70,6 @@ rake 'db:authentication'
 inject_into_file 'spec/rails_helper.rb',
   after: /require\s+['|"]rspec\/rails['|"]/ do <<-'RUBY'
 
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'simplecov'
 SimpleCov.start
 RUBY
