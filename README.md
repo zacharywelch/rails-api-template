@@ -44,6 +44,7 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - [lograge](https://github.com/roidrage/lograge)
   - [fluentd](https://github.com/fluent/fluentd)
   - [fluent-plugin-record-modifier](https://github.com/repeatedly/fluent-plugin-record-modifier)
+  - [rack-cors](https://github.com/cyu/rack-cors)
 
   Several custom gems add behaviors needed by CareerBuilder APIs
   - [json_responder](https://cagit.careerbuilder.com/CorpAppsCB/json_responder)
@@ -80,11 +81,13 @@ rails-api new [api_name] --skip-test-unit -m https://raw.githubusercontent.com/z
   - config/database.yml
   - config/secrets.yml
 
-14. Replaces README with markdown
+14. Adds basic Swagger file to act as documentation.
 
-15. Customizes .gitignore file
+15. Replaces README with markdown
 
-16. Creates initial github commit
+16. Customizes .gitignore file
+
+17. Creates initial github commit
 
 ## Additional steps
 
