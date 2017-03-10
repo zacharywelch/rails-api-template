@@ -32,6 +32,7 @@ gem 'okcomputer'
 gem 'lograge'
 gem 'fluentd'
 gem 'fluent-plugin-record-modifier'
+gem 'rack-cors', require: 'rack/cors'
 
 append_to_file 'Gemfile', "\n\n\n"
 
@@ -103,11 +104,27 @@ inject_into_file 'config/application.rb',
 
     # Only set localhost IPv4 and IPv6 as trusted proxies
     config.action_dispatch.trusted_proxies = %w(127.0.0.1 ::1).map { |proxy| IPAddr.new(proxy) }
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:3000', 'stg-my_app_name.cb.com', 'my_app_name.cb.com'
+        resource '/swagger', headers: :any, methods: :get
+        unless Rails.env.production?
+          resource '*', headers: :any, methods: :any
+        end
+      end
+    end
 RUBY
 end
+gsub_file "config/application.rb", /my_app_name/, @app_name
 gsub_file "config/application.rb", /require "rails"/, '# require "rails"'
 gsub_file "config/application.rb", /require "action_view\/railtie"/, '# require "action_view/railtie"'
 gsub_file "config/application.rb", /require "sprockets\/railtie"/, '# require "sprockets/railtie"'
+
+get "#{@path}/public/swagger.json", 'public/swagger.json'
+get "#{@path}/app/controllers/swaggers_controller.rb", 'app/controllers/swaggers_controller.rb'
+get "#{@path}/spec/requests/swaggers_spec.rb", 'spec/requests/swaggers_spec.rb'
+gsub_file "public/swagger.json", /my_app_name/, @app_name
 
 gsub_file 'config/environments/development.rb', /consider_all_requests_local(\s)*= true/, 'consider_all_requests_local       = false'
 gsub_file 'config/environments/test.rb', /consider_all_requests_local(\s)*= true/, 'consider_all_requests_local       = false'
@@ -143,6 +160,8 @@ create_file "config/routes.rb", force: true do <<-'RUBY'
 Rails.application.routes.draw do
   scope defaults: { format: :json } do
     # resources :users
+
+    resource :swagger, only: :show
   end
 end
 RUBY
