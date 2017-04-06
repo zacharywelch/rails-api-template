@@ -14,16 +14,19 @@ create_file 'config/secrets.yml.sample', File.read('config/secrets.yml')
 remove_file 'Gemfile'
 create_file 'Gemfile'
 
+CORPAPPS_GEMS_SERVER = 'https://corpapps-gems.cb.com'
+
 add_source 'https://rubygems.org'
+add_source CORPAPPS_GEMS_SERVER
 
 gem 'rails', '~> 4.2.5'
 gem 'rails-api'
 gem 'jbuilder'
 gem 'responders'
-gem 'paginate-responder', git: 'git@cagit.careerbuilder.com:CorpAppsCB/paginate-responder.git'
-gem 'json_responder', git: 'git@cagit.careerbuilder.com:CorpAppsCB/json_responder.git'
-gem 'rails_api_sortable', git: 'git@cagit.careerbuilder.com:CorpAppsCB/rails_api_sortable.git'
-gem 'partner_authentication', git: 'git@cagit.careerbuilder.com:CorpAppsCB/partner_authentication.git'
+gem 'json_responder'
+gem 'paginate-responder', source: CORPAPPS_GEMS_SERVER
+gem 'rails_api_sortable'
+gem 'partner_authentication'
 gem 'faker'
 gem 'kaminari'
 gem 'newrelic_rpm'
