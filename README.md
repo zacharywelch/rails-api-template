@@ -2,7 +2,7 @@
 
 A rails [application template](http://guides.rubyonrails.org/rails_application_templates.html) for APIs.
 
-To see a sample of using Rails as an API check out [rails-api-sample](https://cagit.careerbuilder.com/CorpAppsCB/rails-api-sample).
+To see a sample of using Rails as an API check out [rails-api-sample](https://github.com/zacharywelch/rails-api).
 
 ## Installation
 
